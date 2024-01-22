@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ToDoListModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ToDo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="CreateDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="IsCompleted" Type="Boolean" Nullable="false" />
+    <Property Name="UpdatedUserId" Type="Int32" />
+    <Property Name="CreatedUserId" Type="Int32" Nullable="false" />
+    <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="User" Relationship="Self.FK_ToDo_CreatedUser" FromRole="ToDo" ToRole="User" />
+    <NavigationProperty Name="User1" Relationship="Self.FK_ToDo_UpdatedUser" FromRole="ToDo" ToRole="User" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="ToDo" Relationship="Self.FK_ToDo_CreatedUser" FromRole="User" ToRole="ToDo" />
+    <NavigationProperty Name="ToDo1" Relationship="Self.FK_ToDo_UpdatedUser" FromRole="User" ToRole="ToDo" />
+  </EntityType>
+  <Association Name="FK_ToDo_CreatedUser">
+    <End Role="User" Type="Self.User" Multiplicity="1" />
+    <End Role="ToDo" Type="Self.ToDo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ToDo">
+        <PropertyRef Name="CreatedUserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_ToDo_UpdatedUser">
+    <End Role="User" Type="Self.User" Multiplicity="0..1" />
+    <End Role="ToDo" Type="Self.ToDo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="User">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ToDo">
+        <PropertyRef Name="UpdatedUserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ToDoListEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ToDo" EntityType="Self.ToDo" />
+    <EntitySet Name="User" EntityType="Self.User" />
+    <AssociationSet Name="FK_ToDo_CreatedUser" Association="Self.FK_ToDo_CreatedUser">
+      <End Role="User" EntitySet="User" />
+      <End Role="ToDo" EntitySet="ToDo" />
+    </AssociationSet>
+    <AssociationSet Name="FK_ToDo_UpdatedUser" Association="Self.FK_ToDo_UpdatedUser">
+      <End Role="User" EntitySet="User" />
+      <End Role="ToDo" EntitySet="ToDo" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

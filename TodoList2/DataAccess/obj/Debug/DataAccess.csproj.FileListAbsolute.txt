@@ -1,0 +1,12 @@
+C:\Users\İrem\Source\Repos\TodoList2\DataAccess\bin\Debug\DataAccess.dll.config
+C:\Users\İrem\Source\Repos\TodoList2\DataAccess\bin\Debug\DataAccess.dll
+C:\Users\İrem\Source\Repos\TodoList2\DataAccess\bin\Debug\DataAccess.pdb
+C:\Users\İrem\Source\Repos\TodoList2\DataAccess\bin\Debug\EntityFramework.dll
+C:\Users\İrem\Source\Repos\TodoList2\DataAccess\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\İrem\Source\Repos\TodoList2\DataAccess\bin\Debug\EntityFramework.xml
+C:\Users\İrem\Source\Repos\TodoList2\DataAccess\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\İrem\Source\Repos\TodoList2\DataAccess\obj\Debug\DataAccess.csproj.AssemblyReference.cache
+C:\Users\İrem\Source\Repos\TodoList2\DataAccess\obj\Debug\DataAccess.csproj.CoreCompileInputs.cache
+C:\Users\İrem\Source\Repos\TodoList2\DataAccess\obj\Debug\DataAccess.csproj.CopyComplete
+C:\Users\İrem\Source\Repos\TodoList2\DataAccess\obj\Debug\DataAccess.dll
+C:\Users\İrem\Source\Repos\TodoList2\DataAccess\obj\Debug\DataAccess.pdb

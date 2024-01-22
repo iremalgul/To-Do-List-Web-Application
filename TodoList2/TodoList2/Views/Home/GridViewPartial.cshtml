@@ -1,0 +1,32 @@
+﻿@model List<TodoList2.ToDo>
+
+
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">JOB</th>
+            <th scope="col">DATE</th>
+            <th scope="col">COMPLETED</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <th scope="row">@item.Id</th>
+                <td>@item.Description</td>
+                <td>@item.CreateDate.ToString() </td>
+                <td> <input type="checkbox" class="form-check-input" @(item.IsCompleted ? "checked='checked'" : string.Empty)></td>
+                <td>
+                    <button type="button" class="btn btn-danger" data-id="@item.Id" onclick="DeleteClicked(this)">Delete</button>
+                    <button type="button" class="btn btn-primary" data-id="@item.Id" data-completed="@item.IsCompleted" data-name="@item.Description " data-date="@item.CreateDate.ToString()" onclick="UpdateClicked(this)">Update</button>
+                </td>
+
+            </tr>
+        }
+
+    </tbody>
+</table>
